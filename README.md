@@ -212,7 +212,7 @@ session_destroy();
 (Add your project screenshots here)
 
 - Login Page
-  ![Login Page](<img width="762" height="488" alt="image" src="https://github.com/user-attachments/assets/5ad4ae87-7c07-4181-97dd-82d6bc5b57e3" />)
+  ![Login Page]("https://github.com/user-attachments/assets/5ad4ae87-7c07-4181-97dd-82d6bc5b57e3")
 - Admin Dashboard
 - Maintain Users
 - Maintain Vendors
