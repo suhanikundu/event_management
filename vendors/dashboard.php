@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'vendor'){
     header("Location: ../dashboard.php");
     exit();
 }
@@ -10,18 +10,26 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Panel</title>
+    <title>Vendor Dashboard</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>Admin Panel</h2>
+    <h2>Vendor Main Page</h2>
 
     <br><br>
 
-    <a href="maintenance.php">
-        <button>Maintenance</button>
+    <a href="your_item.php">
+        <button>Your Item</button>
+    </a>
+
+    <a href="add_item.php">
+        <button>Add New Item</button>
+    </a>
+
+    <a href="transaction.php">
+        <button>Transaction</button>
     </a>
 
     <br><br>
@@ -29,8 +37,6 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
     <a href="../dashboard.php">
         <button>Back</button>
     </a>
-
-    <br><br>
 
     <a href="../logout.php">
         <button>Logout</button>

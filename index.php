@@ -13,16 +13,28 @@ if(isset($_POST['login']))
 
     $row = mysqli_fetch_assoc($query);
 
-    if($row)
-    {
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['role']    = $row['role'];
-        $_SESSION['name']    = $row['name'];
+if($row)
+{
+    $_SESSION['user_id'] = $row['id'];
+    $_SESSION['role']    = $row['role'];
+    $_SESSION['name']    = $row['name'];
 
-        
-        header("Location: dashboard.php");
-        exit();
+    if($row['role'] == 'admin')
+    {
+        header("Location: admin/maintenance.php");
     }
+    elseif($row['role'] == 'vendor')
+    {
+        header("Location: vendor/dashboard.php");
+    }
+    elseif($row['role'] == 'user')
+    {
+        header("Location: user/dashboard.php");
+    }
+
+    exit();
+}
+
     else
     {
         echo "<script>alert('Invalid Credentials');</script>";

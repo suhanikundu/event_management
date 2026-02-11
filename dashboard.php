@@ -28,8 +28,8 @@ if(!isset($_SESSION['role'])){
         <button>User</button>
     </a>
 
-    <a href="vendor\dashboard.php">
-        <button>Vendor</button>
+    <a href="vendors/dashboard.php">
+        <button>Vendors</button>
     </a>
 
     <br><br>
