@@ -28,7 +28,28 @@ The application follows the given **flowchart structure** and includes proper se
 
 ---
 
-## 🔐 Login System
+##  Screenshots
+
+
+- Login Page  
+  ![Login Page](https://github.com/user-attachments/assets/b724c13f-fea0-4ff4-8d57-1bb984cfc412)
+- Admin Dashboard
+- ![Admin Page](https://github.com/user-attachments/assets/73c0cbb5-3134-4441-a7a7-075ee836f84b)
+- Maintain Users
+- ![Maintain Users](https://github.com/user-attachments/assets/361fed1f-7d8d-4b72-ba95-bc50ba10fc73)
+- ![](https://github.com/user-attachments/assets/31e16d48-a573-45fa-a034-4258a11ec23b)
+- Maintain Vendors
+- ![](https://github.com/user-attachments/assets/e894afbf-74b7-436a-b1ce-7d604f6c5d05)
+- ![](https://github.com/user-attachments/assets/5b414469-40d8-4a1a-9114-4b3bcf73cd20)
+- ![](https://github.com/user-attachments/assets/4c85bd98-ac16-472e-b893-7b3ba238d9e4)
+  ![](https://github.com/user-attachments/assets/bc254f66-aa85-477e-b897-d8e98708ae54)
+
+
+
+---
+
+
+## Login System
 
 - Users log in using Email and Password.
 - Password field is hidden (`type="password"`).
@@ -205,19 +226,6 @@ session_destroy();
 - Session security checked
 - CRUD operations working properly
 
----
-
-##  Screenshots
-
-(Add your project screenshots here)
-
-- Login Page
-  ![Login Page]("https://github.com/user-attachments/assets/5ad4ae87-7c07-4181-97dd-82d6bc5b57e3")
-- Admin Dashboard
-- Maintain Users
-- Maintain Vendors
-- Vendor Panel
-- User Panel
 
 ---
 
