@@ -1,0 +1,40 @@
+body {
+    font-family: Arial;
+    background-color: #cfcfcf;
+}
+
+.container {
+    width: 500px;
+    margin: 80px auto;
+    background: #4e73b8;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.btn-group {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+}
