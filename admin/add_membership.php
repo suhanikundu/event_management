@@ -2,27 +2,63 @@
 session_start();
 include("../config.php");
 
-if($_SESSION['role'] != 'admin'){
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
     header("Location: ../index.php");
     exit();
 }
 
-if(isset($_POST['submit'])){
+if(isset($_POST['add']))
+{
     $type = $_POST['type'];
     $duration = $_POST['duration'];
     $price = $_POST['price'];
 
-    mysqli_query($conn, "INSERT INTO memberships (type, duration_months, price)
-    VALUES ('$type','$duration','$price')");
+    $query = "INSERT INTO memberships (type, duration_months, price)
+              VALUES ('$type','$duration','$price')";
 
-    echo "<script>alert('Membership Added Successfully');</script>";
+    if(mysqli_query($conn,$query)){
+        echo "<script>
+        alert('Membership Added Successfully');
+        window.location='maintenance.php';
+        </script>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Membership</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
 
-<form method="POST">
-    Type: <input type="text" name="type" required><br><br>
-    Duration (months): <input type="number" name="duration" required><br><br>
-    Price: <input type="number" name="price" required><br><br>
+<div class="container">
+    <h2>Add Membership</h2>
 
-    <button type="submit" name="submit">Add Membership</button>
-</form>
+    <form method="POST">
+
+        <label>Type</label>
+        <input type="text" name="type" placeholder="6 Months / 1 Year / 2 Years" required>
+
+        <label>Duration (months)</label>
+        <input type="number" name="duration" required>
+
+        <label>Price</label>
+        <input type="number" name="price" required>
+
+        <br><br>
+
+        <button type="submit" name="add">Add Membership</button>
+    </form>
+
+    <br>
+    <a href="maintenance.php">
+        <button>Back</button>
+    </a>
+
+</div>
+
+</body>
+</html>
