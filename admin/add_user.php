@@ -17,7 +17,11 @@ if(isset($_POST['add'])){
     $query = "INSERT INTO users (name,email,password,role) 
               VALUES ('$name','$email','$password','$role')";
 
-    mysqli_query($conn,$query);
+    $result = mysqli_query($conn,$query);
+
+    if(!$result){
+    die("Error: " . mysqli_error($conn));
+}
 
     echo "<script>
     alert('User Added Successfully');
