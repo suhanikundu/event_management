@@ -1,10 +1,19 @@
 <?php
+session_start();
 include("../config.php");
 
-$id = $_GET['id'];
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
+    header("Location: ../index.php");
+    exit();
+}
 
-mysqli_query($conn, "DELETE FROM users WHERE id=$id");
+if(isset($_GET['id']))
+{
+    $id = $_GET['id'];
 
-header("Location: maintain_vendor.php");
-exit();
+    mysqli_query($conn, "DELETE FROM vendors WHERE id=$id");
+
+    header("Location: maintain_vendor.php");
+    exit();
+}
 ?>
