@@ -1,33 +1,58 @@
 <?php
+session_start();
 include("../config.php");
 
-$id = $_GET['id'];
-
-if(isset($_POST['update']))
-{
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-
-    mysqli_query($conn, "UPDATE users SET name='$name', email='$email' WHERE id=$id");
-
-    echo "<script>
-    alert('Vendor Updated Successfully');
-    window.location='maintain_vendor.php';
-    </script>";
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
+    header("Location: ../index.php");
+    exit();
 }
 
-$result = mysqli_query($conn, "SELECT * FROM users WHERE id=$id");
-$row = mysqli_fetch_assoc($result);
+$result = mysqli_query($conn, "SELECT * FROM vendors");
 ?>
 
-<h2>Update Vendor</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Vendors</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
 
-<form method="POST">
-    Name: <input type="text" name="name" value="<?php echo $row['name']; ?>" required><br><br>
-    Email: <input type="email" name="email" value="<?php echo $row['email']; ?>" required><br><br>
+<div class="container">
+    <h2>All Vendors</h2>
 
-    <button type="submit" name="update">Update Vendor</button>
-</form>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
 
-<br>
-<a href="maintain_vendor.php">Back</a>
+        <?php while($row = mysqli_fetch_assoc($result)) { ?>
+
+        <tr>
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['category']; ?></td>
+            <td>
+                <a href="edit_vendor.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                <a href="delete_vendor.php?id=<?php echo $row['id']; ?>">Delete</a>
+            </td>
+        </tr>
+
+        <?php } ?>
+
+    </table>
+
+    <br>
+    <a href="maintain_vendor.php">
+        <button>Back</button>
+    </a>
+
+</div>
+
+</body>
+</html>
