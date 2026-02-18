@@ -2,21 +2,32 @@
 session_start();
 include("../config.php");
 
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
+    header("Location: ../index.php");
+    exit();
+}
+
 if(isset($_POST['add']))
 {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $category = $_POST['category'];
     $password = $_POST['password'];
 
-    mysqli_query($conn, "INSERT INTO users (name,email,password,role)
-    VALUES ('$name','$email','$password','vendor')");
+    $query = "INSERT INTO vendors (name,email,category,password)
+              VALUES ('$name','$email','$category','$password')";
 
-    echo "<script>
-    alert('Vendor Added Successfully');
-    window.location='maintain_vendor.php';
-    </script>";
+    if(mysqli_query($conn,$query)){
+        echo "<script>
+        alert('Vendor Added Successfully');
+        window.location='maintain_vendor.php';
+        </script>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -36,6 +47,9 @@ if(isset($_POST['add']))
 
         <label>Email</label>
         <input type="email" name="email" required>
+
+        <label>Category</label>
+        <input type="category" name="category" required>
 
         <label>Password</label>
         <input type="password" name="password" required>
